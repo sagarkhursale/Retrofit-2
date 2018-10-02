@@ -2,6 +2,7 @@
 package com.sagar.retrofit2.http.apimodel;
 
 import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
