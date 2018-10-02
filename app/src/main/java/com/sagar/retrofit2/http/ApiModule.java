@@ -11,8 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class ApiModule {
 
-    private final String BASE_URL= "https://maps.googleapis.com/maps/api/place/nearbysearch/json?" +
-            "location=18.498072,73.8328396&radius=2000&key=AIzaSyCRQIpvfeQHo8eN-hxRQOJe_I7r2TU-85Q";
+    private final String BASE_URL= "https://maps.googleapis.com/maps/api/place/nearbysearch/";
 
 
     @Provides
