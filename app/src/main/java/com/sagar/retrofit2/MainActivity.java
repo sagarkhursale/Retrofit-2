@@ -22,6 +22,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +32,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();
-    private static String mResult="Reactive Api Call >";
+    private static String mResult = "Reactive Api Call >";
 
     private TextView textView_Result;
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         ((App) getApplication()).getComponent().inject(this);
 
-        textView_Result=findViewById(R.id.txt_result);
+        textView_Result = findViewById(R.id.txt_result);
 
 
         // retrofit api call
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // reactive api call
+        // reactive api call with Rx operators & filter
         placesApi.getTopPlacesObservables()
                 .flatMap(new Function<Places, ObservableSource<Result>>() {
                     @Override
@@ -82,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
                         return Observable.just(result.getName());
                     }
                 })
+                .filter(new Predicate<String>() {
+                    @Override
+                    public boolean test(String s) {
+                        return s.startsWith("S");
+                    }
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<String>() {
@@ -92,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(String selection) {
-                        mResult=mResult+"\n"+selection;
+                        mResult = mResult + "\n" + selection;
                         //Log.i(TAG, "Rx : " + selection);
                     }
 
