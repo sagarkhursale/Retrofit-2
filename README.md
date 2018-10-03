@@ -13,8 +13,7 @@ A Type-Safe Rest Client For Android Developed By Square.
 
 
 
-> ## RxAndroid
-
+> RxAndroid
 
 - It stands for Reactive extension for Android.
 
@@ -26,7 +25,8 @@ A Type-Safe Rest Client For Android Developed By Square.
 
 
 
-> ## Prerequisites
+
+>  Prerequisites
 
 - Retrofit : 
  
@@ -37,7 +37,6 @@ A Type-Safe Rest Client For Android Developed By Square.
             implementation 'com.squareup.okhttp3:okhttp:3.10.0'
             
             
-
 - RxJava : 
 
           implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
